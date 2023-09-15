@@ -11,8 +11,6 @@ const Searchbar = ({ onSearchHandler }) => {
     return fetch(`${GEO_API_URL}?namePrefix=${inputValue}`, geoApiOptions)
       .then((response) => response.json())
       .then((result) => {
-        console.log("Search Result: ", result);
-
         return {
           options: result.data.map((city) => ({
             value: `${city.latitude} ${city.longitude}`,
@@ -24,7 +22,6 @@ const Searchbar = ({ onSearchHandler }) => {
   };
 
   const handleOnChange = (searchData) => {
-    console.log("Search Data", searchData);
     setSearchString(searchData);
     onSearchHandler(searchData);
   };
